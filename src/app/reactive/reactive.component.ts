@@ -27,7 +27,7 @@ export class ReactiveComponent implements OnInit {
       email: ['', [
         Validators.required,
         Validators.email,
-        EmailValidator.validEmail
+        EmailValidator.invalidEmail
       ]]
     })
   }
@@ -49,7 +49,7 @@ export class ReactiveComponent implements OnInit {
     ],
     'email' : [
       { type: 'required', message: 'Email is required' },
-      { type: 'validEmail' || 'email', message: 'Invalid Email Format' },
+      { type: 'invalidEmail' || 'email', message: 'Invalid Email Format' },
     ]
   }
 
