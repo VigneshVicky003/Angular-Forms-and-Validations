@@ -1,0 +1,35 @@
+<h1>Template-Driven Form</h1>
+
+<form autocomplete="off" #user="ngForm" (ngSubmit)="createUser(user)">
+  <label for="firstname">First Name <span class="required">*</span></label><br>
+  <input type="text" id="firstname" name="firstname"
+         required
+         minlength="3"
+         maxlength="10"
+         pattern="[a-zA-Z]+"
+         [(ngModel)]="firstname" #f_name="ngModel">
+
+  <div class="errors" *ngFor="let message of validation_messages.firstname">
+    <span *ngIf="f_name.touched && f_name.hasError(message.type)">{{message.message}}</span>
+  </div>
+
+  <br>
+  <label for="surname">Surname </label><br>
+  <input type="text" id="surname" name="surname" [(ngModel)]="surname" >
+
+  <br><br>
+  <label for="email">Email <span class="required">*</span></label><br>
+  <input type="email" id="email" name="email"
+         required
+         email
+         pattern="[a-zA-Z0-9._+-]+[a-zA-Z0-9]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+\.[a-z]{2,3}"
+         [(ngModel)]="email" #e_mail="ngModel">
+
+  <div class="errors" *ngFor="let message of validation_messages.email">
+    <span *ngIf="e_mail.touched && e_mail.hasError(message.type)">{{message.message}}</span>
+  </div>
+
+  <br>
+  <button type="button" [routerLink]="['/a']">Back</button>
+  <button type="submit" [disabled]="!user.valid">Submit</button>
+</form>

@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+input{
+  border: 1px solid gray;
+  outline: none;
+}
+button{
+  margin-right: 10px;
+}
+.required{
+  color: red;
+}
+.errors span{
+  color: red;
+  display: block;
+}
+.input-error, .ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}

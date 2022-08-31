@@ -1,0 +1,26 @@
+<h1>Reactive Form</h1>
+
+<form autocomplete="off" [formGroup]="user" (ngSubmit)="createUser(user)">
+  <label for="firstname">First Name <span class="required">*</span></label><br>
+  <input type="text" id="firstname" formControlName="firstname"
+         [ngClass]="{'input-error': user.get('firstname').touched && user.get('firstname').errors}">
+  <div class="errors" *ngFor="let message of validation_messages.firstname">
+    <span *ngIf="user.get('firstname').touched && user.get('firstname').hasError(message.type)">{{message.message}}</span>
+  </div>
+
+  <br>
+  <label for="surname">Surname </label><br>
+  <input type="text" id="surname" formControlName="surname">
+
+  <br><br>
+  <label for="email">Email <span class="required">*</span></label><br>
+  <input type="email" id="email" formControlName="email"
+         [ngClass]="{'input-error': form.email.touched && form.email.errors}">
+  <div class="errors" *ngFor="let message of validation_messages.email">
+    <span *ngIf="form.email.touched && form.email.hasError(message.type)">{{message.message}}</span>
+  </div>
+
+  <br>
+  <button type="button" [routerLink]="['/b']">Back</button>
+  <button type="submit" [disabled]="user.invalid">Submit</button>
+</form>
